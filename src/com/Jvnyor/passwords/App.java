@@ -30,6 +30,8 @@ public class App {
 				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 				clipboard.setContents(stringSelection, null);
 				
+				System.out.println("\nCopied to clipboard!");
+				
 				System.out.print("\nDo you wants new password? 1 - Yes | 2 - No: ");
 				
 				nextInt = scanner.nextInt();
@@ -39,6 +41,10 @@ public class App {
 			
 			if (nextInt == 2 || nextInt == 2) {
 				scanner.close();
+				break;
+			} else if (nextInt != 2 && nextInt != 1){
+				scanner.close();
+				System.out.println("Invalid key!");
 				break;
 			}
 		
