@@ -39,7 +39,7 @@ public class App {
 				e.printStackTrace();
 			}
 			
-			if (nextInt == 2 || nextInt == 2) {
+			if (nextInt == 2) {
 				scanner.close();
 				break;
 			} else if (nextInt != 2 && nextInt != 1){
@@ -48,7 +48,7 @@ public class App {
 				break;
 			}
 		
-		} while (nextInt == 1 || nextInt == 1);
+		} while (nextInt == 1);
 		
 	}
 }
