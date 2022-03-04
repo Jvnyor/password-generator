@@ -17,23 +17,14 @@ public class App {
 		try (Scanner scanner = new Scanner(System.in)) {
 			
 			long leftLimit = 1L;
-		    long rightLimit = 100L;
+		    long rightLimit = 1000000000L;
 		    long generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
 			
 			String filename = "password_generated_"+generatedLong+".txt";
 			
-//			System.out.println(filename);
+			System.out.println(filename);
 			
 			File file = new File(filename);
-			
-			try {
-				if (!file.exists()) {
-					file.createNewFile();
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
 			try {
 					
@@ -48,9 +39,17 @@ public class App {
 			
 				String password = PasswordGenerator.generateSecureRandomPassword(value);
 					
-				System.out.println(password);
+//				System.out.println(password);
 				FileWriter myWriter = null;
 				try {
+					try {
+						if (!file.exists()) {
+							file.createNewFile();
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					myWriter = new FileWriter(filename, StandardCharsets.UTF_8);
 						
 					if (myWriter != null) {
