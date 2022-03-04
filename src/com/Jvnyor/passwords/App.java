@@ -22,7 +22,7 @@ public class App {
 			
 			String filename = "password_generated_"+generatedLong+".txt";
 			
-			System.out.println(filename);
+//			System.out.println(filename);
 			
 			File file = new File(filename);
 			
