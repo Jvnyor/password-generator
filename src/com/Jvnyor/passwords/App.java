@@ -28,12 +28,12 @@ public class App {
 			
 			try {
 					
-				Integer value;
+				int value;
 					
 				do {
 					System.out.print("How many characters you want for the password? Insert a number: ");
 					value = scanner.nextInt();
-				} while (value != 0 || value != null || !value.toString().isBlank() || !value.toString().isEmpty() && !(value <= 50));
+				} while (value != 0 || Integer.valueOf(value) != null || !(value <= 50));
 						
 				System.out.println("\nGenerating password...\n");
 			
