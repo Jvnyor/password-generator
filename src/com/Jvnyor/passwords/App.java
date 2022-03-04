@@ -33,7 +33,7 @@ public class App {
 				do {
 					System.out.print("How many characters you want for the password? Insert a number: ");
 					value = scanner.nextInt();
-				} while (value == 0 || value == null || value.toString().isBlank() || value.toString().isEmpty());
+				} while (value != 0 || value != null || !value.toString().isBlank() || !value.toString().isEmpty() && !(value <= 50));
 						
 				System.out.println("\nGenerating password...\n");
 			
