@@ -33,35 +33,42 @@ public class App {
 				do {
 					System.out.print("How many characters you want for the password? Insert a number: ");
 					value = scanner.nextInt();
-				} while (value != 0 || Integer.valueOf(value) != null || !Integer.valueOf(value).toString().isEmpty() || !Integer.valueOf(value).toString().isBlank() || !(Integer.valueOf(value).toString().length() < 0) || !(value <= 50));
+				} while (value == 0 || !(value <= 50));
 						
 				System.out.println("\nGenerating password...\n");
 			
 				String password = PasswordGenerator.generateSecureRandomPassword(value);
 					
-//				System.out.println(password);
-				FileWriter myWriter = null;
-				try {
+				System.out.print("Do you want to create file with password? 1-Y/ 2-N: ");
+				
+				int nextInt = scanner.nextInt();
+				
+				if (nextInt == 1) {
+				
+					FileWriter myWriter = null;
 					try {
-						if (!file.exists()) {
-							file.createNewFile();
+						try {
+							if (!file.exists()) {
+								file.createNewFile();
+							}
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
+						myWriter = new FileWriter(filename, StandardCharsets.UTF_8);
+							
+						if (myWriter != null) {
+								myWriter.write(password);
+								System.out.println("\nFile created! "+filename);
+						}
+							
+					} catch (FileNotFoundException e) {
 						e.printStackTrace();
+					} finally {
+						myWriter.flush();
+						myWriter.close();
 					}
-					myWriter = new FileWriter(filename, StandardCharsets.UTF_8);
-						
-					if (myWriter != null) {
-							myWriter.write(password);
-							System.out.println("\nFile created! "+filename);
-					}
-						
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} finally {
-					myWriter.flush();
-					myWriter.close();
+				
 				}
 					
 				StringSelection stringSelection = new StringSelection(password);
